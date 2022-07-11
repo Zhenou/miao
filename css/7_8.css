@@ -1,0 +1,109 @@
+/* html{
+  zoom: 2;
+} */
+h1{
+  text-shadow:
+  0.5px 0.5px 0 rgb(117,117,117 ) ,
+  1px 1px 0 rgb(117,117,117 ) ,
+  1.5px 1.5px 0 rgb(117,117,117 ) ,
+  2px 2px 0 rgb(117,117,117 ) ,
+  2.5px 2.5px 0 rgb(117,117,117 ) ,
+  3px 3px 0 rgb(117,117,117 ) ;
+}
+
+body>h1>span{
+  color: blue;
+}
+
+
+h3,h3>span{
+  font-size: 50px;
+  color: white;
+  /* text-shadow:
+  1px 0px 0 red,
+  0px -1px 0 red,
+  -1px 0px 0 red,
+  0px 1px 0 red,
+  2px 0px 1px red,
+  0px -2px 1px red,
+  -2px 0px 1px red,
+  0px 2px 1px red; */
+  text-shadow:
+  0px 0px 1px red,
+  0px 0px 1px red,
+  0px 0px 1px red,
+  0px 0px 1px red,
+  0px 0px 1px red,
+  0px 0px 1px red,
+  0px 0px 1px red,
+  0px 0px 1px red,
+  0px 0px 1px red,
+  0px 0px 1px red;
+
+}
+
+.b {
+  /* color: red; */
+  font-size: 2em;
+}
+
+
+
+.b input{
+  font-size: 1em;
+  line-height: 1.5em;
+}
+
+h2 {
+  text-transform: capitalize;
+  font-family: 'comic sans ms','宋体',serif;
+  font-variant: small-caps
+}
+
+.a {
+    text-align: right;
+  font-style: italic;
+  font-size: 2em;
+  text-indent: 2em;
+}
+
+.a>b>span{
+
+  color: purple;
+  /* color: blue; */
+  text-decoration: underline;
+  text-decoration-color: red;
+}
+
+.a>span{
+
+  /* color: purple; */
+  /* color: blue; */
+  text-decoration:underline line-through;
+  /* text-decoration-color: red; */
+
+}
+
+.d  {
+  text-indent: 40px;
+  word-spacing: 10px;
+  letter-spacing: 7px;
+}
+
+
+
+/* .c>span{
+  font-size: 100%;
+}
+
+.c>span>span{
+  font-size: 150%;
+}
+
+.c>span>span>span{
+  font-size:  200%;
+} */
+
+p.c span{
+  font-size: 150%;
+}
