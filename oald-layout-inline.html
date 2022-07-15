@@ -1,131 +1,146 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
   <title>Document</title>
   <style>
-    *{
-      padding: 0px;
+     *{
       margin: 0px;
+      padding: 0px;
       box-sizing: border-box;
-    }
-    html{
-      height: 100%;
-
+      font-size:0;
     }
     body{
       min-width: 930px;
       height: 100%;
+      width: 100%;
+      font-size:0;
     }
-    .a{
+    html{
+      height: 100%;
+      width: 100%;
+    }
+    .a, .b, .c, .d{
       border: 1px solid black;
-      border-top: 0px;
-      background-color: rgb(255,182,196);
+      vertical-align:top;
+      font-size: 35px;
+      display: inline-block;
+
+    }
+    div{
+      vertical-align:top;
+      font-size: 35px;
+      display: inline-block;
+
+    }
+
+    .a{
       height: 100%;
       width: 200px;
-      margin: 0px;
-    }
-    .a .a_1{
-      height: 30px;
+      background-color: rgb(255, 210, 200,0.5);
     }
     .a h2{
-      height: 70px;
+      height:70px ;
+      font-size: 24px;
+      width: 200px;
+      text-align: right;
       line-height: 70px;
-      text-align:right;
     }
-    .a input{
+
+    .a_1 input{
       margin-left: 3px;
       vertical-align: middle;
-       height: 30px;
+      height: 30px;
       width: 150px;
     }
-    .a button{
+    .a_1 button{
       vertical-align: middle;
-      margin-left: -5px;
+      margin-left: -12px;
       height: 28px;
       width: 44px;
     }
-    .a .a_2{
+    .a_2 {
+      margin-left: -3px;
       margin-top: 20px;
-      height: calc(100% - 120px);
-      overflow: auto;
+      width: 200px;
+      height: calc(100% - 140px);
+      overflow-y: scroll;
     }
-    .a .a_2 ul{
+    .a_2 ul{
 
-      margin-left: 40px;
-      list-style: none;
+      /* margin-left: 40px; */
+      /* margin-top: 20px; */
+
     }
-    ul li a {
-      text-decoration: none;
+    .a_2 ul li{
+      margin-left: 60px;
     }
+    .a_2 ul li a{
+      font-size: 16px;
+    }
+
     .b{
-      border: 1px solid black;
-      border-top: 0px;
-      background-color: rgb(255,247,215);
       height:100%;
-      width: calc( 100% - 600px);
-      margin-left: 200px;
-      margin-top: -100vh;
-      min-width: 330px;
-
+      width: calc(100% - 600px);
+      background-color: rgba(139, 62, 45, 0.5);
+    }
+    .b h2{
+      font-size: 24px;
+      margin-left: 20px;
     }
     .b .b_1{
-      border: 1px solid black;
-      border-top: 0px;
-      border-left: 0px;
-      border-right: 0px;
-    }
-    .b .b_1 h2{
-      height: 70px;
       line-height: 70px;
-      margin-left: 20px;
-    }
-    .b .b_2 p{
-      margin-top: 30px;
-      margin-left: 20px;
-    }
-    .b .b_2 ol{
-      margin-left: 50px;
-      margin-right: 50px;
+
+      width: 100%;
+      border-bottom: 2px solid black;
 
     }
-    .b .b_2{
-      overflow:auto;
-      height: calc(100% - 70px);
+    .b .b_2 {
+      overflow-y: scroll;
+      /* height: calc(100% - 70px); */
+      width: 100%;
+      height: calc(100% - 71px );
+      font-size: 16px;
+      padding-left: 20px;
+      padding-top: 20px;
+      padding-right: 20px;
+    }
+    .b .b_2 ol {
+      padding-left: 40px;
+      padding-top: 20px;
+    }
+    .b .b_2 ol li{
+
+      font-size: 16px;
+
     }
     .c{
-      border: 1px solid black;
-      background-color: rgb(255,182,196);
-      height: 100%;
+      height:100vh;
       width: 200px;
-      margin-left: calc(100% - 400px);
-      margin-top: -100vh;
+      background-color: rgba(232, 22, 134, 0.5);
     }
     .c h2{
-      height: 70px;
       line-height: 70px;
+      font-size: 24px;
+      padding-left: 60px;
+
       text-align: right;
-      margin-right: 20px;
     }
     .d{
-      border: 1px solid black;
-      background-color: rgb(255,182,196);
-      height: 100%;
+      height:100vh;
       width: 200px;
-      margin-left: calc(100% - 200px);
-      margin-top: -100vh;
+      background-color: rgba(22, 68, 232, 0.5);
     }
     .d h2{
-      height: 70px;
+      font-size: 24px;
       line-height: 70px;
-      text-align: right;
+      padding-left: 100px;
     }
   </style>
 </head>
 <body>
-<div class="a">
+  <span class="a">
   <h2>OALD Se7en</h2>
   <div class="a_1">
     <input type="text">
@@ -195,13 +210,13 @@
       <li><a href="">word60</a></li>
     </ul>
   </div>
-</div>
-<div class="b">
+  </span>
+  <span class="b">
   <div class="b_1">
     <h2>fantasy</h2>
   </div>
   <div class="b_2">
-    <p>Lorem,ipsurm.</p>
+    Lorem,ipsurm.
     <ol>
       <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque, numquam voluptatibus aspernatur nam quidem inventore, incidunt temporibus odit voluptate suscipit nisi dolores labore doloribus eum? Odio id error neque ullam?</li>
       <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque, numquam voluptatibus aspernatur nam quidem inventore, incidunt temporibus odit voluptate suscipit nisi dolores labore doloribus eum? Odio id error neque ullam?</li>
@@ -225,12 +240,9 @@
       <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque, numquam voluptatibus aspernatur nam quidem inventore, incidunt temporibus odit voluptate suscipit nisi dolores labore doloribus eum? Odio id error neque ullam?</li>
     </ol>
   </div>
-</div>
-<div class="c">
-  <h2>Vocabulary</h2>
-</div>
-<div class="d">
-  <h2>History</h2>
-</div>
+
+  </span>
+  <span class="c"><div><h2>Vocabulary</h2></div></span>
+  <span class="d"><div><h2>History</h2></div></span>
 </body>
 </html>
