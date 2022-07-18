@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-eqspan="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <style>
@@ -15,31 +15,48 @@
 
     body,
     html {
-      height: 100vh;
 
+      height: 100%;
       width: 100%;
     }
-
+    span{
+      display: block;
+    }
     .main {
-      height: 100vh;
+      height: 100%;
       width: 100%;
       position: relative;
+
     }
 
     .top {
       position: absolute;
+      width: 100%;
       height: 100px;
-      height: 100vh;
-
-      background-color: red;
+      background-color: skyblue;
+    }
+    .left {
+      position: absolute;
+      width: 200px;
+      top: 100px;
+      bottom: 0px;
+      background-color: green;
     }
 
+    .right {
+      position: absolute;
+      right: 0px;
+      left: 200px;
+      top: 100px;
+      bottom: 0px;
+      background-color: greenyellow;
+    }
   </style>
 </head>
 
 <body>
   <span class="main">
-    <span class="top">11111111</span>
+    <span class="top"></span>
 
     <span class="left">
       <span>11111</span>
@@ -190,8 +207,8 @@
         reprehenderit, et ad, reiciendis ipsum quo fugiat sequi odit tempore. Et ipsum officia laudantium dolore nobis
         sequi modi molestiae eos, voluptatibus accusantium, incidunt cum rerum animi sunt laboriosam omnis perferendis
         dolorum reiciendis quaerat possimus. Dolores mollitia unde voluptates incidunt amet!</span>
-    </span>
-  </span>
+        </span>
+        </span>
 </body>
 
 </html>
