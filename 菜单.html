@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+
+*{
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  font-size: 0;
+}
+section{
+  background-color: rgb(39,37,42);
+}
+div{
+  line-height: 26px;
+  height: 26px;
+  width: 65px;
+  text-align: center;
+  color: white;
+  background-color: rgb(39,37,42);
+  font-size: 14px;
+  border: 1px solid rgb(39,37,42);
+  display: inline-block;
+}
+div:hover {
+
+  background-color: rgb(4,79,190);
+  border-radius: 3px;
+
+}
+ul{
+  border-radius: 5px;
+  white-space: nowrap;
+
+}
+ul li{
+  font-size: 14px;
+  width: 180px;
+  height: 26px;
+  /* border-top: 1px solid rgb(39,37,42);
+  border-left: 1px solid rgb(39,37,42);
+  border-right: 1px solid rgb(39,37,42);
+  border-bottom: 1px solid rgb(39,37,42); */
+}
+.code{
+  position: relative;
+}
+
+.code_list_1{
+  list-style: none ;
+  display: none;
+  position: absolute;
+  text-align:left;
+  top: 100%;
+  left: 0%;
+  background-color: rgb(39,37,42);
+  padding-left: 3px;
+  padding-right: 5px;
+
+}
+
+.code:hover .code_list_1 {
+  display: block;
+
+}
+.code_list_2 {
+
+  background-color: rgb(39,37,42);
+  position: absolute;
+  display: none;
+  margin: 0px;
+  padding: 0px;
+  left: 97%;
+  top: 66%;
+  list-style: none;
+  padding-left: 3px;
+  padding-right: 5px;
+}
+
+.code_list_1>li:nth-child(3):hover .code_list_2 {
+  display: block;
+}
+
+.a{
+  position: relative;
+  border: 1px solid rgb(39,37,42);
+  width: 65px;
+}
+
+.a .a_1 {
+
+  text-align: left;
+  background-color: rgb(39,37,42);
+  top: 6px;
+  position: absolute;
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+  left: 0;
+  top: 100%;
+  display: none;
+  white-space: nowrap;
+
+}
+.a .a_1 {
+  padding-left: 3px;
+  padding-right: 5px;
+}
+.a:hover .a_1 {
+  border-radius: 3px;
+  display: block;
+}
+li:hover{
+  background-color: rgb(4,79,190);
+  border-radius: 3px;
+}
+.a .a_2{
+
+  background-color: rgb(39,37,42);
+  position: absolute;
+  list-style: none;
+  display: none;
+  margin: 0px;
+  padding: 0px;
+  left: 97%;
+  top: 33%;
+}
+.a .a_2{
+  padding-left: 3px;
+  padding-right: 5px;
+}
+.a .a_2 ul li {
+  font-size: 16px;
+}
+
+.a_1 li:nth-child(2):hover .a_2{
+  display: block;
+
+}
+
+</style>
+<body>
+<section>
+ <div></div>
+ <div class="code">Code
+  <ul class="code_list_1">
+    <li> &nbsp;&nbsp;关于Visual Studio Code</li>
+    <li> &nbsp;&nbsp;检查更新...</li>
+    <li> &nbsp;&nbsp;首选项&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  >
+      <ul class="code_list_2">
+        <li>&nbsp;&nbsp;设置&nbsp;&nbsp;</li>
+        <li>&nbsp;&nbsp;联机服务设置&nbsp;&nbsp;</li>
+        <li>&nbsp;&nbsp;遥测设置&nbsp;&nbsp;</li>
+        <li>&nbsp;&nbsp;扩展&nbsp;&nbsp;</li>
+      </ul>
+    </li>
+
+  </ul>
+ </div>
+ <div class="a">文件
+   <ul class="a_1">
+    <li>&nbsp;&nbsp;保存&nbsp;&nbsp;</li>
+    <li>&nbsp;&nbsp;另存为...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>
+     <ul class="a_2">
+       <li>&nbsp;&nbsp;桌面&nbsp;&nbsp;</li>
+       <li>&nbsp;&nbsp;我的电脑&nbsp;&nbsp;</li>
+       <li>&nbsp;&nbsp;文件夹&nbsp;&nbsp;</li>
+
+    </ul>
+  </li>
+  <li>&nbsp;&nbsp;退出&nbsp;&nbsp;</li>
+</ul>
+</div>
+<div>编辑</div>
+<div>选择</div>
+<div>查看</div>
+<div>转到</div>
+<div>运行</div>
+<div>终端</div>
+<div>窗口</div>
+<div>帮助</div>
+
+</section>
+</body>
+</html>
