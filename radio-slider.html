@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  .main {
+    width: 1228px;
+    height: 343px;
+    position: relative;
+  }
+
+  .button {
+    position: absolute;
+    bottom: 0px;
+    left: 10px;
+  }
+
+  .imgs {
+    width: 614px;
+    height: 343px;
+    position: absolute;
+    overflow: hidden;
+  }
+
+  .imgs img {
+    position: absolute;
+    display: inline-block;
+    width: 614px;
+    height: 343px;
+    left: 100%;
+    transition: 1s;
+  }
+
+
+
+  #pic1,
+  #pic2,
+  #pic3,
+  #pic4 {
+    display: none;
+  }
+
+
+
+  label {
+    border-radius: 50px;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-color: rgba(255, 3, 3, 0);
+    border: 1px solid red;
+    cursor: pointer;
+  }
+
+  input:nth-child(1):checked~.button label:nth-child(1),
+  input:nth-child(2):checked~.button label:nth-child(2),
+  input:nth-child(3):checked~.button label:nth-child(3),
+  input:nth-child(4):checked~.button label:nth-child(4) {
+    background-color: rgba(255, 3, 3, 1);
+  }
+
+  input:nth-child(1):checked~.imgs img:nth-child(1),
+  input:nth-child(2):checked~.imgs img:nth-child(2),
+  input:nth-child(3):checked~.imgs img:nth-child(3),
+  input:nth-child(4):checked~.imgs img:nth-child(4) {
+    transition: 1s;
+    left: 0px;
+  }
+
+</style>
+
+<body>
+
+  <div class="main">
+    <input type="radio" id="pic1" name="1" checked>
+    <input type="radio" id="pic2" name="1">
+    <input type="radio" id="pic3" name="1">
+    <input type="radio" id="pic4" name="1">
+    <div class="imgs">
+      <img src="https://w.wallhaven.cc/full/z8/wallhaven-z8dglj.jpg" alt="" class="p1">
+      <img src="https://w.wallhaven.cc/full/dp/wallhaven-dpo5w3.jpg" alt="" class="p2">
+      <img src="https://w.wallhaven.cc/full/e7/wallhaven-e76zjr.jpg" alt="" class="p3">
+      <img src="https://w.wallhaven.cc/full/x8/wallhaven-x8d5v3.jpg" alt="" class="p4">
+    </div>
+
+    <div class="button">
+      <label for="pic1"></label>
+      <label for="pic2"></label>
+      <label for="pic3"></label>
+      <label for="pic4"></label>
+    </div>
+</body>
+</div>
+
+
+</html>
