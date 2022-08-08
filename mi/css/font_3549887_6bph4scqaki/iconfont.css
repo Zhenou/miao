@@ -1,0 +1,71 @@
+@font-face {
+  font-family: "iconfont"; /* Project id 3549887 */
+  src: url('iconfont.woff2?t=1658926219925') format('woff2'),
+       url('iconfont.woff?t=1658926219925') format('woff'),
+       url('iconfont.ttf?t=1658926219925') format('truetype');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-weixiubanshou:before {
+  content: "\e715";
+}
+
+.icon-xiangyou3fill:before {
+  content: "\e777";
+}
+
+.icon-24huafei:before {
+  content: "\e66f";
+}
+
+.icon-zhiding:before {
+  content: "\e684";
+}
+
+.icon-lianxiren:before {
+  content: "\e654";
+}
+
+.icon-clock:before {
+  content: "\e627";
+}
+
+.icon-simqia:before {
+  content: "\e728";
+}
+
+.icon-sousuo:before {
+  content: "\eafe";
+}
+
+.icon-kefu:before {
+  content: "\ec2e";
+}
+
+.icon-fangzidichan:before {
+  content: "\e628";
+}
+
+.icon-fanbei:before {
+  content: "\e8af";
+}
+
+.icon-shouji:before {
+  content: "\e8c6";
+}
+
+.icon-shuzihuobi:before {
+  content: "\e6b1";
+}
+
+.icon-gouwuche:before {
+  content: "\e613";
+}
+

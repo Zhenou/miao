@@ -1,0 +1,111 @@
+.main {
+  margin: auto;
+  width: 500px;
+  height: 500px;
+  border: 1px solid rgba(0, 0, 0, 0);
+  transform-style: preserve-3d;
+  // perspective: 1000px;
+  animation: sall 3s infinite linear alternate;
+  transform-origin: 50px 350px 0;
+
+  // &:hover {
+  //   transform: rotate3d(1, 1, 0, 360deg)rotate3d(1, 1, 0, 360deg);
+  //   transition: 10s linear;
+  // transition: 9999999s;
+  // transform: translateZ(100px);
+  // perspective: 10000px;
+  // animation: mymove 9s infinite;
+  // }
+
+  // transform-origin:;
+}
+
+.one,
+.two,
+.three,
+.four,
+.five,
+.six {
+  width: 100px;
+  height: 100px;
+  border: 1px solid black;
+  text-align: center;
+  line-height: 100px;
+
+
+  box-sizing: border-box;
+}
+
+.one {
+  background-color: red;
+  margin-top: 200px;
+  transform: rotatex(90deg) translateZ(-50px);
+
+}
+
+.two {
+  background-color: pink;
+
+  transform: translateZ(50px);
+}
+
+.three {
+  background-color: blue;
+
+  transform: rotatex(90deg) translateZ(50px);
+
+}
+
+.five {
+  background-color: orange;
+
+  position: relative;
+  top: -300px;
+  left: -100px;
+  transform: rotatey(90deg) translateZ(50px);
+
+}
+
+.six {
+  background-color: khaki;
+
+  transform: rotatey(90deg) translateZ(-50px);
+
+  position: relative;
+  top: -400px;
+  left: 100px;
+}
+
+.four {
+  background-color: orangered;
+
+  transform: translateZ(-50px);
+  position: relative;
+  top: -200px;
+
+}
+
+// @keyframes mymove {
+//   0% {
+//     transform: rotateY(0deg) rotateX(0deg)rotateZ(0deg);
+
+//   }
+
+//   50% {
+//     transform: rotateY(0deg)rotateX(0deg)rotateZ(45deg);
+
+//   }
+
+//   100% {
+//     transform: rotateY(0deg)rotateX(0deg)rotateZ(90deg);
+
+//   }
+@keyframes sall {
+  form {
+    transform: rotate3d(0, 0, 0, -0deg);
+  }
+
+  to {
+    transform: rotate3d(1, 1, 1, 360deg);
+  }
+}

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    div {
+      width: 200px;
+      height: 100px;
+      background-color: #EEEEEE;
+      display: table-cell;
+      vertical-align: bottom;
+      padding-bottom: 10px;
+      border: 5px solid skyblue;
+      /* border-bottom: 5px inset red; */
+      position: relative;
+    }
+
+    div::after {
+      content: '';
+      position: absolute;
+      width: 200px;
+      height: 10px;
+      background-color: red;
+      left: 0px;
+      bottom: 0px;
+    }
+
+    div:hover {
+      font-size: 50px;
+      background: green;
+      transition: background-color 0.1s,
+        font-size 5s;
+    }
+
+  </style>
+</head>
+
+<body>
+  <div>
+    订阅博客
+  </div>
+</body>
+
+</html>
