@@ -1796,9 +1796,13 @@ body {
   z-index: 1000;
 
   .move_nav-top {
-    div {
+    height: 455px;
       width: 80px;
-      height: calc(455px / 5);
+      border: 1px solid #F3F3F3;
+    div {
+      overflow: hidden;
+      width: 80px;
+      height: 91px;
       background-color: #FFFFFF;
       border-bottom: 1px solid #F3F3F3;
       text-align: center;
@@ -1812,11 +1816,14 @@ body {
         display: block;
         color: #8E8E8E;
         font-size: 30px;
+        margin-top: 18px;
       }
 
       .move_nav-name {
         display: block;
         font-size: 14px;
+        margin-top: 5px;
+          color: #6E6E6E;
       }
     }
   }
