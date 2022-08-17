@@ -28,6 +28,18 @@
     ctx.fillStyle = color
     ctx.fillRect(x, y, 1, 1)
   }
+
+  for (var j = 100; j >= 0; j--) {
+    for (var x = 100; x >= 0; x = x - 0.01) {
+      var color = 'rgb(' + j + ',' + x + ',' + j + ')'
+      var y = Math.sqrt(j * j - x * x)
+      dot(x + 200, y + 200, color)
+      dot(-x + 200, y + 200, color)
+      dot(x + 200, -y + 200, color)
+      dot(-x + 200, -y + 200, color)
+      dot(200, 200, color)
+    }
+  }
   /**
    * YOUR TASK
       * 在 坐标 (42, 42) 画出一个点
