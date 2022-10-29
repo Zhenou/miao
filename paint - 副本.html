@@ -29,17 +29,7 @@
     ctx.fillRect(x, y, 1, 1)
   }
 
-  for (var j = 100; j >= 0; j--) {
-    for (var x = 100; x >= 0; x = x - 0.01) {
-      var color = 'rgb(' + j + ',' + x + ',' + j + ')'
-      var y = Math.sqrt(j * j - x * x)
-      dot(x + 200, y + 200, color)
-      dot(-x + 200, y + 200, color)
-      dot(x + 200, -y + 200, color)
-      dot(-x + 200, -y + 200, color)
-      dot(200, 200, color)
-    }
-  }
+
   /**
    * YOUR TASK
       * 在 坐标 (42, 42) 画出一个点
@@ -136,17 +126,12 @@
       dot(i + 300, j + 25, 'red')
     }
   }
+
   //     * 画两个个空心的圆，居中：
   //       * 一个半径为50像素
-  for (x = 50 ; x>=-x; x-=0.01) {
-    var y = Math.sqrt(50*50-x*x)
-    dot(x + 200, y, 'black')
-
-  }
   //       * 一个半径为200像素
   //     * 画一个实心的圆，半径至少为100像素
   //     * 画一个【大小合适】的sin(x)的图像
-
   //     * 画出rgb色彩空间的某一面（尺寸要大于100x100）
   //        'rgb(255,255,0)'
   //        '#ff00ff'

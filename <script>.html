@@ -1,0 +1,992 @@
+<script type="x">
+  var multiply = function (num1, num2) {
+    if (num1.length <= 1 && num2.length <= 1) {
+      return '' + Number(num1) * Number(num2)
+    }
+
+    if (num1 == 0 || num2 == 0) {
+      return '0';
+    }
+
+    if (num1.length < num2.length) {
+      var long = num2;
+      num2 = num1;
+      num1 = long;
+    }
+
+    var result = '';
+    var carry = BigInt(0);
+    var array = [];
+    var makeZero = '';
+    var left = BigInt(0);
+
+    for (var j = num2.length - 1; j >= 0; j--) {
+      for (var i = num1.length - 1; i >= 0; i--) {
+        var a = BigInt(num1[i]);
+        var b = BigInt(num2[j]);
+        sum = BigInt(a * b + BigInt(carry)); //两个数的乘积+上次的进位数
+        left = BigInt(sum % BigInt(10)); //乘积的余数
+        carry = (sum - left) / BigInt(10); //乘积的进位数
+        result = left + result;
+      }
+
+      if (carry >= 1) {
+        result = carry + result;
+        carry = 0;
+      }
+
+      array.unshift(result);
+      result = '';
+    }
+
+    for (var i = array.length - 1; i >= 0; i--) { //计算乘积的倍数
+      array[i] = array[i] + makeZero;
+      makeZero = '0' + makeZero;
+    }
+
+    return sumAnd(array);
+  }
+
+  var sumAnd = function (array) {
+    var sum = array[0]; //第一个数组往下累加值
+    var carry = 0;
+    var resultAll = '';
+    var first = sum;
+    for (var i = 1; i < array.length; i++) { //数组里的第几个字符串
+      var longCount = first.length - array[i].length; //计算数组的第一个字符串与其他字符串的长度差
+
+      for (var k = 1; k <= longCount; k++) { //长度差循环
+        array[i] = '0' + array[i]; //用长度差值在前面补0
+      }
+
+      for (var j = first.length - 1; j >= 0; j--) { //补完0之后进行累加
+        var a = first[j]; //第一个字符串
+        var b = array[i][j];//第I个字符串
+        var abc = Number(a) + Number(b) + carry;//计算a+b和上一次进位的和
+        var left = abc % 10; //计算本次和的余数
+        carry = (abc - left) / 10;//计算本次和有没有进位数
+        resultAll = left + resultAll;
+      }
+
+      if (carry == 1) {
+        resultAll = '1' + resultAll;
+        carry = 0;
+      }
+
+      first = resultAll;
+      resultAll = '';
+    }
+
+    return first;
+
+  }
+  console.log(multiply('140', '721'))
+
+
+
+
+  // var sumAnd = function (array) {
+  //   debugger
+
+  //   var sum = BigInt(array[10]) + BigInt(array[9]) + BigInt(array[8]) + BigInt(array[7]) + BigInt(array[6]) + BigInt(array[5]) + BigInt(array[4]) + BigInt(array[3]) + BigInt(array[2]) + BigInt(array[1]) + BigInt(array[0]);
+
+  //   return a;
+  // }
+
+</script>
+<script type="x">
+  debugger
+  var sortedSquares = function (nums) {
+    var start = 0; //设定开始指针
+    var end = nums.length - 1;//设定结尾指针
+    var result = new Array(nums.length);//新建数组
+    for (var i = nums.length - 1; i >= 0; i--) {//从传入数组的结尾开始循环
+      var s = nums[start] * nums[start];//数组从0开始相乘
+      var e = nums[end] * nums[end];//数组从结尾开始相乘
+      if (s > e) { //如果初始的数的乘值大于结尾数的乘值
+        result[i] = s; //以新建数组的结尾到开始的顺序将数值较大的数放进去
+        start++;//如果开始的数乘值大于结尾数的乘值则开始的数位置向上+1
+      } else { //如果结尾的乘值大于开始的乘值
+        result[i] = e;//以信件数组的从开头到结尾的顺序将数值较大的数放进去
+        end--;//如果结尾数的乘值大于开始数的乘值则结尾数的数位向下-1
+      }
+    }
+    return result
+  };
+  console.log(sortedSquares([-4, -1, 0, 3, 10]))
+                            //16  1  0  9  100
+</script>
+<script type="x">
+  debugger
+  var isPerfectSquare = function (num) {
+    var small = 1;  //设置最小值
+    var big = num; //设置当前函数最大值
+    while (big - small !== 1) { //当差值不等于1的时候进行循环,等于1结束循环
+      var middle = parseInt((small + big) / 2); //重新计算中间值
+      if (num > middle * middle) {//如果数字大于中间值的积
+        small = middle; //最小值变为中间值
+      } else if (num < middle * middle) {//如果数字小于中间值的积
+        big = middle;//则最大值变为中间值
+      } else { // 当数值等于中间值的积的时候
+        return true;//返回真
+      }
+    }
+    return false //循环结束返回假
+  };
+  console.log(isPerfectSquare(20))
+</script>
+<Script type="x">
+  debugger
+  var merge = function (nums1, m, nums2, n) {
+    var ad = m + n;//数组长度
+    var group = new Array(ad); //新建数组
+    var empty = []; //新建空数组
+    var count = 0;//计数器
+    for (var i = 0; i < m; i++) {
+      nums2[n + count] = nums1[i];
+      count++;
+    }
+    var start = 0; //设置数组开的位置
+    var end = count + n - 1;//设置数组结束位置
+    for (var j = group.length - 1; j >= 0; j--) {
+      if (nums2[start] > nums2[end]) {
+        group[ad - 1] = nums2[start];
+        start++;
+      } else if (nums2[end] == nums2[start]) {
+
+        start++;
+      } else {
+        group[ad - 1] = nums2[end];
+        end--;
+      }
+
+    }
+
+
+
+
+
+    return group;
+
+  };
+  console.log(merge([1, 2, 3, 0, 0, 0], 3, [2, 5, 6], 3))
+</Script>
+<script type="x">
+  debugger;
+  var singleNumber = function (nums) {
+    var result = 0;
+    for (var a of nums) {
+      result = a ^ result;
+    }
+    return result;
+  };
+  console.log(singleNumber([1,2,5,2]))
+</script>
+<script type="x">
+  debugger;
+  var countAndSay = function (n) {
+    if (n == 1) {
+      return '1';
+    }
+    var newNumber = countAndSay(n - 1);
+    var result = '';
+    var count = 1;
+    for (var i = 1; i < newNumber.length; i++) {
+      if (newNumber[i] !== newNumber[i - 1]) {
+        result += count + newNumber[i - 1];
+        count = 1;
+      } else {
+        count++;
+      }
+    }
+    result += count + newNumber[i - 1]; //最后一次写入数字
+    return result;
+  };
+  console.log(countAndSay(5))
+</script>
+<script type="x">
+  debugger;
+  var sumOfUnique = function (nums) {
+    var result = 0; //和
+    var count = 0; //计数器
+    for (var i = 0; i < nums.length; i++) { //nums每一位数提取
+      for (var j = 0; j < nums.length; j++) { //对比nums每一位数
+        if (nums[i] == nums[j]) { //如果数相同
+          count++; //计数器增加
+          if (count > 1) { //计数器增加到两次
+            count = 0; //计数器归零
+            break; //退出循环
+          }
+        }
+
+      }
+      if (count === 1) { //循环结束计数器只有一次
+        result += nums[i]; //和累加
+        count = 0; //计数器归零重新开始循环
+      }
+    }
+    return result;
+  };
+  console.log(sumOfUnique([1, 2, 3]))
+</script>
+<script type="x">
+  function indexof(array, target) {
+    for (var i = 0; i < array.length; i++) {
+      if (target === array[i]) {
+        return i;
+      }
+    }
+    return -1;
+  }
+</script>
+<script type="x">
+  function lastIndexof(array, target) {
+    for (var i = array.length - 1; i >= 0; i--) {
+      if (target === array[i]) {
+        return i;
+      }
+    }
+    return -1;
+  }
+  console.log(lastIndexof([1, 2, 3, 2, 1], 2))
+</script>
+<script type="x">
+  function slice(array, start, end) {
+    if (end == undefined) {
+      end = array.length;
+    }
+    var b = [];
+    for (var i = start; i < end; i++) {
+      b.push(array[i]);
+    }
+    return b;
+  }
+  console.log(slice([0, 1, 2, 3, 4], 1))
+</script>
+<script type="x">
+  function slice(srt, start, end) {
+    var result = '';
+    for (var i = start; i < end; i++) {
+      result += str[i];
+    }
+  }
+
+</script>
+<script type="x">
+  function concat(array, items) {
+    var newA = [];
+    for (var i = 0; i < array.length; i++) {
+      newA.push(array[i]);
+    }
+    if (Array.isArray(items)) {
+      for (var i = 0; i < items.length; i++) {
+        newA.push(items[i]);
+      }
+      return newA;
+    }
+    newA.push(items[i]);
+    return newA;
+  }
+</script>
+<script type="x">
+  debugger;
+  function flat(array) {
+    var result = [];
+    for (var i = 0; i < array.length; i++) {
+      var items = array[i];
+      if (Array.isArray(items)) {
+        for (var j = 0; j < array[i].length; j++) {
+          result.push(items[j]);
+        }
+      } else {
+        result.push(items);
+      }
+
+    }
+    return result;
+  }
+  console.log(flat())
+</script>
+<script type="">
+  function includes(array, value) {
+    if (value !== value) {
+      for (var i = 0; i < array.length; i++) {
+        if (array[i] !== array[i]) {
+          return true
+        }
+      }
+    }
+    for (var i = 0; i < array.length; i++) {
+      if (value === array[i]) {
+        return true;
+      }
+    }
+    return false;
+  }
+  console.log(includes([1, 2, 3, 4], 3))
+</script>
+<script type="x" name="就地反转没完成">
+  function reverse(array) {
+    for (var i = 0; i < (array.length) / 2; i++) {
+      for (var j = (array.length) / 2 - 1; j >= 0; j--) {
+        var a = array[j];
+        array[j] = array[i];
+        array[i] = a;
+      }
+    }
+    return array;
+  }
+</script>
+<script type="x">
+  function reverse(array) {
+    var result = [];
+    for (var i = array.length - 1; i >= 0; i--) {
+      result.push(array[i]);
+    }
+    return result;
+  }
+</script>
+<script type='x'>
+  var a = "/a/./b/../../c/";
+  var b = a.slice(0, 3);
+  var c = a.slice(3);
+  console.log(b);
+  console.log(c)
+</script>
+<script type='x'>
+  debugger;
+  var simplifyPath = function (path) {
+    if (path === '/../') {
+      return "/";
+    }
+    var result = [];
+    var count = 0;
+    var str = '';
+    for (var i = 0; i < path.length; i++) {
+      if (path[i] === '/' && path[i + 1] === '.' && path[i + 2] === '/') {
+        result.push(path[i]);
+        count++;
+        i = i + 2;
+      } else if (path[i] === '/' && path[i + 1] === '.' && path[i + 2] === '.') {
+        i = i + 2;
+        for (j = 0; j < count; j++) {
+          result.pop();
+        }
+        count = 0;
+      } else if (path[i] === '/' && path[i + 1] === '/') {
+        result.push(path[i]);
+        i = i + 1;
+      } else {
+        result.push(path[i]);
+        count++;
+      }
+    }
+    result.pop();
+    for (var k = 0; k < result.length; k++) {
+      if (k == 0) {
+        str += result[k];
+      } else if (result[k] === '.') {
+        str = str;
+      } else {
+        str += result[k];
+      }
+    }
+    return str;
+  };
+  console.log(simplifyPath("/home//foo/"))
+</script>
+<script type='x'>
+  debugger;
+  var search = function (nums, target) {
+    // for(var i = 0; i< nums.length;i++){
+    //     if(target === nums[i]){
+    //         return i
+    //     }
+    // }
+    // return -1
+    if (nums[0] == target) {
+      return 0;
+    }
+    var right = nums[nums.length - 1];
+    var left = nums[0];
+    do {
+      var mid = Math.floor((right + left) / 2 + 1);
+      var num = nums[mid];
+      if (target == num) {
+        return mid;
+      } else if (num > target) {
+        right = mid - 1;
+      } else {
+        left = mid + 1;
+      }
+    } while (left <= right);
+    return -1;
+  };
+  console.log(search([2, 5], 5))
+</script>
+<script type='x'>
+  debugger;
+  var selfDividingNumbers = function (left, right) {
+    var a = [];
+    for (var i = left; i <= right; i++) {
+      var str = '' + i;
+      if (str.includes(0)) {
+        continue;
+      }
+      var count = 0;
+      for (var j = 0; j < str.length; j++) {
+        if (i % str[j] === 0) {
+          count++;
+        }
+      }
+      if (count == str.length) {
+        a.push(i);
+        count = 0;
+      }
+    }
+    return a;
+  };
+  console.log(selfDividingNumbers(1, 22))
+</script>
+<script type="x">
+  debugger;
+  var uniquePaths = function (m, n) {
+    var newArray = [];
+    for (var i = 0; i < m; i++) {
+      newArray.push(Array(n).fill(1));
+    }
+    for (var i = 1; i < newArray.length; i++) {
+      for (var j = 1; j < newArray[i].length; j++) {
+        newArray[i][j] = newArray[i - 1][j] + newArray[i][j - 1];
+
+      }
+    }
+    return newArray[m - 1][n - 1];
+  };
+  console.log(uniquePaths(3, 7))
+</script>
+<script type="x">
+  debugger;
+  var guessNumber = function (n, m) {
+
+    var left = 0;
+    var right = n;
+    while (left <= right) {
+      var mid = Math.floor((left + right) / 2);
+      if (mid > m) {
+        right = mid - 1;
+      }
+      if (mid < m) {
+        left = mid + 1;
+      }
+      if (mid == m) {
+        return mid;
+      }
+    }
+  };
+  console.log(guessNumber(1, 1))
+</script>
+<script type="x">
+  debugger;
+  var generate = function (numRows) {
+    var array = [];
+    for (var i = 0; i < numRows; i++) {
+      array.push(new Array(i + 1).fill(1));
+    }
+    for (var i = 2; i < array.length; i++) {
+      for (var j = 0; j < array[i].length - 2; j++) {
+        array[i][j + 1] = array[i - 1][j] + array[i - 1][j + 1];
+      }
+    }
+    return array;
+  };
+  console.log(generate(5))
+</script>
+<script type="x">
+  debugger;
+  var majorityElement = function (nums) {
+    var obj = {};
+    for (var i = 0; i < nums.length; i++) {
+      var num = nums[i];
+      if (!(num in obj)) {
+        obj[num] = 0;
+      }
+      obj[num]++;
+    }
+    for (var a in obj) {
+      var times = obj[a];
+      if (times > nums.length / 2) {
+        return times;
+      }
+    }
+  };
+  console.log(majorityElement([3, 2, 3]))
+</script>
+<script type="x">
+  debugger;
+  var majorityElement = function (nums) {
+    return nums.sort(function (a, b) {
+      return a - b;
+    }).at(Math.floor(nums.length / 2));
+  };
+  console.log(majorityElement([2, 2, 3, 3, 2, 4, 2]))
+</script>
+<script type="x">
+  var isIsomorphic = function (s, t) {
+    var sObj = {};
+    var tObj = {};
+    var sResult = 0;
+    var tResult = 0;
+    var sArray = s.split('');
+    var tArray = t.split('');
+    for (var i = 0; i < sArray.length; i++) {
+      var sChar = sArray[i];
+      var tChar = tArray[i];
+      if (!(sChar in sObj) && !(tChar in tObj)) {
+        sObj[sChar] = 0;
+        tObj[tChar] = 0;
+      }
+      sObj[sChar]++;
+      tObj[tChar]++;
+    }
+    for (var s in sObj) {
+      sResult += sObj[s];
+    }
+    for (var t in tObj) {
+      tResult += tObj[t];
+    }
+
+    if (sResult == tResult) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+  console.log(isIsomorphic('foo', 'bar'))
+</script>
+<script type="x" name="重构字符串">
+  debugger;
+  var isIsomorphic = function (s, t) {
+    var sObj = {};
+    var tObj = {};
+    var sArray = s.split('');
+    var tArray = t.split('');
+    for (var i = 0; i < sArray.length; i++) {
+      var sChar = sArray[i];
+      var tChar = tArray[i];
+      if (sChar in sObj) {
+          if(sObj[sChar]!== tChar){
+              return false
+          }
+      }else{
+        sObj[sChar] = tChar;
+      }
+      if(tChar in tObj){
+          if(tObj[tChar]!==sChar){
+              return false
+          }
+      }else{
+          tObj[tChar] = sChar
+      }
+    }
+    return true;
+  };
+  console.log(isIsomorphic('badc', "baba"))
+</script>
+<script type="" name="冒泡排序">
+
+  function maopao(ary) {
+    for (let j = ary.length - 1; j >= 1; j--) {
+      var isSo = false;
+      for (let i = 0; i < j; i++) {
+        if (ary[i] > ary[i + 1]) {
+          isSo = true;
+          let a = ary[i];
+          ary[i] = ary[i + 1];
+          ary[i + 1] = a;
+        }
+      }
+      if(!isSo){
+        break
+      }
+    }
+    return ary;
+  }
+
+  console.log(maopao([3, 6, 9, 2, 5, 8, 1, 4, 7]))
+</script>
+<script type="" name="判断是不是非递减数组">
+
+  function isSorted(ary) {
+    for (let i = 1; i < ary.length; i++) {
+      if (ary[i] < ary[i - 1]) {
+        return false;
+      }
+    }
+    return true;
+  }
+  console.log(isSorted([1, 2, 2, 3, 1]))
+</script>
+<script type="" name="选择排序">
+  debugger;
+  function selectSort(ary) {
+    for (let start = 0; start < ary.length - 1; start++) {
+      var minIndex = start; //设最小值为数组的第一个
+      for (let i = start + 1; i < ary.length; i++) {
+        if (ary[i] < ary[minIndex]) { //如果最小值大于循环值+1
+          minIndex = i;//最小值变为i再次进入循环直到找到数组里的最小值
+        }
+      }
+      var t = ary[start];//t变为两个数里的大数
+      ary[start] = ary[minIndex];//起始位置变为最小值
+      ary[minIndex] = t;//最小值变为大数
+    }
+
+    return ary;
+  }
+  console.log(selectSort([6, 2, 9, 2,1]))
+</script>
+<script type='x' name="???">
+  debugger;
+  function insetSort(ary) {
+    for (var i = ary.length - 1; i >= 0; i--) {
+      for (var j = 1; j < ary.length; j++) {
+        if (ary[j] < ary[j - 1]) {
+          var a = ary[j];
+          ary[j] = ary[j - 1];
+          ary[j - 1] = a;
+        }
+      }
+    }
+    return ary;
+  }
+  console.log(insetSort([6, 2, 5, 2, 1]))
+</script>
+<script type="x" name="插入排序">
+  // debugger;
+  function insetSort(ary) {
+    for (var i = 1; i < ary.length; i++) {
+      var value = ary[i];
+      for (var j = i - 1; i >= 0; j--) {
+        if (ary[j] > value) {
+          ary[j + 1] = ary[j];
+        } else {
+          break;
+        }
+      }
+      ary[j + 1] = value;
+    }
+    return ary;
+  }
+  console.log(insetSort([6, 2, 5, 2, 1]))
+</script>
+<script type="x" name="归并排序">
+  debugger;
+  function mergeSort(arr) {
+    if (arr.length < 2) {
+      return arr;
+    }
+    var mid = Math.floor(arr.length / 2);
+    var left = arr.slice(0, mid);
+    var right = arr.slice(mid);
+    mergeSort(left);
+    mergeSort(right);
+    var i = 0;
+    var j = 0;
+    var k = 0;
+    while (i < left.length && j < right.length) {
+      if (left[i] < right[j]) {
+        arr[k] = left[i];
+        i++;
+        k++;
+      } else {
+        arr[k] = right[j];
+        j++;
+        k++;
+      }
+    }
+    while (i < left.length) {
+      arr[k] = left[i];
+      i++;
+      k++;
+    }
+    while (j < right.length) {
+      arr[k] = right[j];
+      j++;
+      k++;
+    }
+    return arr;
+  }
+
+  console.log(mergeSort([3, 6, 9, 2, 5, 8, 1, 4, 7]))
+</script>
+<script type="x" name="快速排序">
+  function qSort(ary) {
+    var pivoIndex = Math.random() * Ary.length | 0;
+    var pivot = ary.at(pivoIndex);
+
+
+  }
+</script>
+<script type="x">
+  debugger;
+  var findTheDifference = function (s, t) {
+    var sObj = {};
+    var tObj = {};
+    var sArr = s.split('').sort().join('');
+    var tArr = t.split('').sort().join('');
+    for (var i = 0; i < tArr.length; i++) {
+      var tChar = tArr[i];
+      if (tChar in tObj) {
+        tObj[tChar]++;
+      } else {
+        tObj[tChar] = 1;
+      }
+    }
+    for (var i = 0; i < sArr.length; i++) {
+      var sChar = sArr[i];
+      if (sChar in tObj) {
+        tObj[sChar]--;
+      }
+    }
+    for (key in tObj) {
+      if (tObj[key] === 1) {
+        return key;
+      }
+    }
+  };
+  console.log(findTheDifference("abcd", "abcde"))
+</script>
+<script type="x">
+  var canConstruct = function (ransomNote, magazine) {
+    var sObj = {};
+    var tObj = {};
+    var sArr = ransomNote.split('').sort().join('');
+    var tArr = magazine.split('').sort().join('');
+    for (var i = 0; i < tArr.length; i++) {
+      var tChar = tArr[i];
+      if (!(tChar in tObj)) {
+        tObj[tChar] = 1;
+      } else {
+        tObj[tChar]++;
+      }
+    }
+    for (var i = 0; i < sArr.length; i++) {
+      var sChar = sArr[i];
+      if (!(sChar in tObj)) {
+        tObj[sChar] = -1;
+      } else {
+        tObj[sChar]--;
+      }
+    }
+    // return tObj;
+    for (key in tObj) {
+      if (tObj[key] < 0) {
+        return false;
+      }
+    }
+    return true;
+  };
+  console.log(canConstruct("az", "ab"))
+</script>
+<script type="x">
+  var wordPattern = function (pattern, s) {
+    var sObj = {};
+    var tObj = {};
+    var sArr = pattern.split('');
+    var tArr = s.split(' ');
+    for (var i = 0; i < sArr.length; i++) {
+      var sChar = sArr[i];
+      var tChar = tArr[i];
+      if (sChar in sObj) {
+        if (sObj[sChar] !== tChar) {
+          return false;
+        }
+      } else {
+        sObj[sChar] = tChar;
+      }
+      if (tChar in tObj) {
+        if (tObj[tChar] !== sChar) {
+          return false;
+        }
+      } else {
+        tObj[tChar] = sChar;
+      }
+    }
+    return true;
+  };
+  console.log(wordPattern("abba", "dog cat cat dog"))
+</script>
+<script type="x" name="链表1">
+  function arrayToList(ary) {
+    var nodes = []
+    for (var i = 0; i < ary.length; i++) {
+      var node = {
+        val: ary[i],
+        next: null
+      }
+      nodes.push(node);
+    }
+    for(var i = 0; i < ary.length - 1; i++) {
+      nodes[i].next = nodes[i+1]
+    }
+    return nodes[0]
+  }
+  console.log(arrayToList([1,2,3,4]))
+</script>
+<script type="x" name="链表2">
+  debugger
+  function arrayToList2(ary) {
+    var list = {
+    val : 0,
+    next : null
+    }
+    var p = list;
+    for(var i = 0; i < ary.length; i++){
+      var node = {
+        val : ary[i],
+        next : null,
+      }
+      p.next = node
+      p = p.next
+    }
+    return list
+  }
+  console.log(arrayToList2([1,2,3,4]))
+</script>
+<script type="x" name="链表变成数组">
+  debugger
+  function listToArray(list) {
+    var result = []
+    while(list){
+      var p = list.val
+      result.push(p)
+      list = list.next
+    }
+    return result
+  }
+  console.log(listToArray(
+      {
+        val : 1,
+        next :
+        {
+          val : 2,
+          next :
+          {
+            val : 3,
+            next :
+            {
+              val : 4,
+              next : null,
+            },
+          },
+        },
+      }))
+</script>
+<script type="x" name="链表变成数组递归">
+  debugger
+  function listToArrayR(list) {
+    if(!list){
+      return []
+    }
+    var tail = list.next
+    var tailArray = listToArrayR(tail)
+    tailArray.unshift(list.val)
+    return tailArray
+
+  }
+  console.log(listToArrayR(
+      {
+        val : 1,
+        next :
+        {
+          val : 2,
+          next :
+          {
+            val : 3,
+            next :
+            {
+              val : 4,
+              next : null,
+            },
+          },
+        },
+      }))
+</script type="x">
+<script type="x">
+  function nth(list, n) {
+
+  }
+</script>
+<script type="x">
+  debugger
+ function ListNode(val, next) {
+      this.val = (val===undefined ? 0 : val)
+      this.next = (next===undefined ? null : next)
+  }
+
+  var deleteDuplicates = function (head,val) {
+    if(!head){
+        return head
+    }
+    var newList = new ListNode(0,head)
+    var p = newList
+    var n = p.next
+    while(n){
+        if(n.val === val){
+          n = n.next
+        }else{
+            p = p.next
+            n = p.next
+        }
+        p.next = n
+    }
+
+    return newList.next
+  };
+  console.log(deleteDuplicates(
+    {
+      val:6,
+      next:
+      {
+        val: 6,
+        next:
+        {
+          val: 6,
+          next:
+          {
+            val: 6,
+            next:
+            {
+              val: 6,
+              next: null
+            }
+
+          }
+
+        },
+      },
+    },6))
+</script>
+<script type="x">
+  function append(list, n) {
+
+  }
+</script>
+<script type="x" name="url编码">
+  function parseQueryString(str) {
+    var obj = {};
+    var arr = str.split('');
+    return arr;
+  }
+  console.log(parseQueryString('wwww'))
+</script>
+<script type="x" name="json转换">
+  function stringify(obj) {
+    var str = '';
+
+  }
+</script>
+<script>
+
+</script>
